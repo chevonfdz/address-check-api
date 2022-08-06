@@ -11,11 +11,12 @@ type Person record {
     string nic;
 };
 
-// MySQL configuration parameters
 
 type isValid record {
     boolean valid;
 };
+
+// MySQL configuration parameters
 
 configurable string host = ?;
 configurable string user = ?;
@@ -41,20 +42,6 @@ service / on new http:Listener(9090) {
             };
             return result.toJson();
         }
-
-        // if (queryRowResponse1.address == queryRowResponse2.address) {
-        //     isValid result = {
-        //         valid: true
-        //     };
-        //     return result.toJson();
-
-        //     //return queryRowResponse1.toJson();
-        // } else {
-        //     // isValid result = {
-        //     //     valid: false
-        //     // };
-        //     // return result.toJson();
-        // }
 
     }
 }

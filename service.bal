@@ -29,8 +29,8 @@ final mysql:Client mysqlClient = check new (host = host, user = user, password =
 service / on new http:Listener(9090) {
 
     isolated resource function get checkAddress(string nic, string address) returns json|error? {
-        Person | error queryRowResponse1 =  mysqlClient->queryRow(`select * from addresses where address=${address}`);
-        Person | error queryRowResponse2 =  mysqlClient->queryRow(`select * from addresses where nic=${nic}`);
+        Person | error queryRowResponse1 =  mysqlClient->queryRow(`select * from addresses where address=${address.trim()}`);
+        Person | error queryRowResponse2 =  mysqlClient->queryRow(`select * from addresses where nic=${nic.trim()}`);
         if queryRowResponse1 is error || queryRowResponse2 is error{
          isValid result = {
                 valid: false
